@@ -2,6 +2,7 @@
 
 const axios = require('axios')
 const logger = require('../utils/logger')
+const config = require('config')
 
 const getWeatherByCityName = async function (cityName) {
   const options = {
@@ -30,7 +31,7 @@ const subscribeUser = async function (appConfig,phoneNumber) {
       'Content-Type': 'application/json'
     },
 
-    url: `${config.get('ideamart.baseUrl')}/subscription/send`,
+    url: `${config.get('ideamartLocationApp.baseUrl')}/subscription/send`,
     data: {
       ...appConfig,
       action: '1',
@@ -53,7 +54,7 @@ const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
     headers: {
       'Content-Type': 'application/json'
     },
-    url: `${config.get('ideamart.baseUrl')}/lbs/locate`,
+    url: `${config.get('ideamartLocationApp.baseUrl')}/lbs/locate`,
     data: {
       ...appConfig,
       subscriberId: `tel ${phoneNumber}`,
