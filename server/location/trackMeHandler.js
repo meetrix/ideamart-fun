@@ -21,6 +21,23 @@ const subscribeUser = async function (req, res) {
   }
 }
 
+const ussdReceiver = async function (req, res) {
+  const message = req.query.message
+
+  try {
+    // const data = await weatherCtrl.subscribeUser(phoneNumber)
+    // return res({
+    //   ...data
+    // })
+    console.log(req.query);
+  } catch (error) {
+    const errorMessage = `Could not subscribe user with id ${message}`
+    !error.logged && logger.error(error, errorMessage)
+    return res(boom.boomify(error, { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage }))
+  }
+}
+
 module.exports = {
-  subscribeUser
+  subscribeUser,
+  ussdReceiver
 }
