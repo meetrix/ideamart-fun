@@ -17,21 +17,11 @@ const ideamartLocationConfig = {
 }
 
 const subscribeUser = async function (phoneNumber) {
-  const data = {
-    ...ideamartLocationApp,
-    action: '1',
-    subscriberId: `tel ${phoneNumber}`
-  }
-  return ideamartService.subscribeUser(data)
+
+  return ideamartService.subscribeUser(ideamartLocationApp,phoneNumber)
 }
 const getLocation = async function (phoneNumber) {
-  const data = {
-    ...ideamartLocationApp,
-    subscriberId: `tel ${phoneNumber}`,
-    ...ideamartLocationConfig
-
-  }
-  return ideamartService.getLocation(data)
+  return ideamartService.getLocation(ideamartLocationApp,phoneNumber,ideamartLocationConfig)
 }
 
 module.exports = {

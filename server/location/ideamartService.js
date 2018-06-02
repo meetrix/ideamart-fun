@@ -23,15 +23,19 @@ const getWeatherByCityName = async function (cityName) {
   }
 }
 
-
-const subscribeUser = async function (data) {
+const subscribeUser = async function (appConfig,phoneNumber) {
   const options = {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    url: 'http://localhost:7000/subscription/send',
-    data: data
+
+    url: `${config.get('ideamart.baseUrl')}/subscription/send`,
+    data: {
+      ...appConfig,
+      action: '1',
+      subscriberId: `tel ${phoneNumber}`
+    }
   }
 
   try {
@@ -43,14 +47,19 @@ const subscribeUser = async function (data) {
     throw error
   }
 }
-const getLocation = async function (data) {
+const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
   const options = {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    url: 'http://localhost:7000/lbs/locate',
-    data: data
+    url: `${config.get('ideamart.baseUrl')}/lbs/locate`,
+    data: {
+      ...appConfig,
+      subscriberId: `tel ${phoneNumber}`,
+      ...appLocationConfig
+
+    }
   }
 
   try {
