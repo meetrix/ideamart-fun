@@ -37,6 +37,15 @@ routes.push.apply(routes, [
       tags: ['api'],
       validate: trackMeValidations.validateUssdReceiver
     }
+  },
+  {
+    path: API_PATH + '/sms/receiver',
+    method: 'POST',
+    handler: trackMeHandler.smsReceiver,
+    config: {
+      tags: ['api'],
+      validate: trackMeValidations.receivedSMS
+    }
   }
 ])
 

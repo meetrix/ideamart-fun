@@ -23,8 +23,14 @@ const subscribeUser = async function (phoneNumber) {
 const getLocation = async function (phoneNumber) {
   return ideamartService.getLocation(ideamartLocationApp,phoneNumber,ideamartLocationConfig)
 }
+const sendSMS = async function (phoneNumbers,message) {
+
+  const destinationAddresses = phoneNumbers.map(phoneNumber => `tel:${phoneNumber}` );
+  return ideamartService.sendSMS(ideamartLocationApp,destinationAddresses,message);
+}
 
 module.exports = {
   subscribeUser,
-  getLocation
+  getLocation,
+  sendSMS
 }
