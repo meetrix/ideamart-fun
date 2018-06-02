@@ -23,7 +23,7 @@ const getWeatherByCityName = async function (cityName) {
     throw error
   }
 }
-const ideamartConfig = {
+const ideamartParams = {
   applicationId: config.get('ideamart.applicationId'),
   password: config.get('ideamart.password'),
   version: config.get('ideamart.version')
@@ -35,9 +35,9 @@ const subscribeUser = async function (phoneNumber) {
     headers: {
       'Content-Type': 'application/json'
     },
-    url: 'http://localhost:7000/subscription/send',
+    url: `${config.get('ideamart.baseUrl')}/subscription/send`,
     data: {
-      ...ideamartConfig,
+      ...ideamartParams,
       action: '1',
       subscriberId: `tel ${phoneNumber}`
     }
