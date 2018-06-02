@@ -31,7 +31,7 @@ const subscribeUser = async function (appConfig,phoneNumber) {
       'Content-Type': 'application/json'
     },
 
-    url: `${config.get('ideamartLocationApp.baseUrl')}/subscription/send`,
+    url: `${config.get('app.baseUrl')}/subscription/send`,
     data: {
       ...appConfig,
       action: '1',
@@ -54,7 +54,7 @@ const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
     headers: {
       'Content-Type': 'application/json'
     },
-    url: `${config.get('ideamartLocationApp.baseUrl')}/lbs/locate`,
+    url: `${config.get('app.baseUrl')}/lbs/locate`,
     data: {
       ...appConfig,
       subscriberId: `tel ${phoneNumber}`,

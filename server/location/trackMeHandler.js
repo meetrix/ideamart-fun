@@ -7,7 +7,7 @@ const trackMeCtrl = require('./trackMeCtrl')
 const logger = require('../utils/logger')
 
 const subscribeUser = async function (req, res) {
-  const phoneNumber = req.query.phoneNumber
+  const phoneNumber = req.payload.phoneNumber
 
   try {
     const data = await trackMeCtrl.subscribeUser(phoneNumber)

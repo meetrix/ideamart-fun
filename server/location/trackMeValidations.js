@@ -6,7 +6,7 @@ const weatherValidations = {
   // POST /subscribeUser
   subscribeUser: {
     headers: {},
-    query: {
+    payload: {
       phoneNumber: joi.string().trim().required().description('phoneNumber')
     },
     options: {
