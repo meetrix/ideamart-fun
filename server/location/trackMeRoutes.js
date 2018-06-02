@@ -28,6 +28,15 @@ routes.push.apply(routes, [
       tags: ['api'],
       validate: trackMeValidations.getLocation
     }
+  },
+  {
+    path: API_PATH + '/sms/received',
+    method: 'POST',
+    handler: trackMeHandler.receivedSMS,
+    config: {
+      tags: ['api'],
+      validate: trackMeValidations.receivedSMS
+    }
   }
 ])
 

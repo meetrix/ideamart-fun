@@ -24,7 +24,8 @@ const getLocation = async function (req, res) {
   const phoneNumber = req.query.phoneNumber
 
   try {
-    const data = await trackMeCtrl.getLocation(phoneNumber)
+    const data = await trackMeCtrl.getLocation(phoneNumber);
+    //const msg = await trackMeCtrl.sendSMS([phoneNumber],"hello")
     return res({
       ...data
     })
@@ -34,8 +35,24 @@ const getLocation = async function (req, res) {
     return res(boom.boomify(error, { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage }))
   }
 }
+const receivedSMS = async function (req, res) {
+  const payload = req.payload
+  console.log(payload);
+
+  // try {
+  //   const data = await trackMeCtrl.getLocation(phoneNumber)
+  //   return res({
+  //     ...data
+  //   })
+  // } catch (error) {
+  //   const errorMessage = `Could not subscribe user with id ${phoneNumber}`
+  //   !error.logged && logger.error(error, errorMessage)
+  //   return res(boom.boomify(error, { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage }))
+  // }
+}
 
 module.exports = {
   subscribeUser,
-  getLocation
+  getLocation,
+  receivedSMS
 }

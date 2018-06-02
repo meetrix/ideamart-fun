@@ -43,7 +43,7 @@ const subscribeUser = async function (appConfig,phoneNumber) {
     const response = await axios(options)
     return response.data
   } catch (error) {
-    logger.error(error, `Failed to fetch weather for ${phoneNumber}`)
+    logger.error(error, `Failed to subscribe user for ${phoneNumber}`)
     error.logged = true
     throw error
   }
@@ -67,7 +67,30 @@ const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
     const response = await axios(options)
     return response.data
   } catch (error) {
-    logger.error(error, `Failed to fetch weather for ${phoneNumber}`)
+    logger.error(error, `Failed to get lbs for ${phoneNumber}`)
+    error.logged = true
+    throw error
+  }
+}
+const sendSMS = async function (appConfig,destinationAddresses,message) {
+  const options = {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    url: `${config.get('app.baseUrl')}/sms/send`,
+    data: {
+      ...appConfig,
+      destinationAddresses: destinationAddresses,
+      message,
+    }
+  }
+
+  try {
+    const response = await axios(options)
+    return response.data
+  } catch (error) {
+    logger.error(error, `Failed to send sms for ${destinationAddresses}`)
     error.logged = true
     throw error
   }
@@ -76,5 +99,6 @@ const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
 module.exports = {
   getWeatherByCityName,
   subscribeUser,
-  getLocation
+  getLocation,
+  sendSMS
 }
