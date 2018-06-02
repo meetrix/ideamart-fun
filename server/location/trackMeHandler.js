@@ -3,14 +3,28 @@
 const boom = require('boom')
 const httpStatus = require('http-status')
 
-const weatherCtrl = require('./trackMeCtrl')
+const trackMeCtrl = require('./trackMeCtrl')
 const logger = require('../utils/logger')
 
 const subscribeUser = async function (req, res) {
   const phoneNumber = req.query.phoneNumber
 
   try {
-    const data = await weatherCtrl.subscribeUser(phoneNumber)
+    const data = await trackMeCtrl.subscribeUser(phoneNumber)
+    return res({
+      ...data
+    })
+  } catch (error) {
+    const errorMessage = `Could not subscribe user with id ${phoneNumber}`
+    !error.logged && logger.error(error, errorMessage)
+    return res(boom.boomify(error, { statusCode: httpStatus.INTERNAL_SERVER_ERROR, message: errorMessage }))
+  }
+}
+const getLocation = async function (req, res) {
+  const phoneNumber = req.query.phoneNumber
+
+  try {
+    const data = await trackMeCtrl.getLocation(phoneNumber)
     return res({
       ...data
     })
@@ -29,7 +43,7 @@ const ussdReceiver = async function (req, res) {
     // return res({
     //   ...data
     // })
-    console.log(req.query);
+    console.log(req.query)
   } catch (error) {
     const errorMessage = `Could not subscribe user with id ${message}`
     !error.logged && logger.error(error, errorMessage)
@@ -39,5 +53,6 @@ const ussdReceiver = async function (req, res) {
 
 module.exports = {
   subscribeUser,
-  ussdReceiver
+  ussdReceiver,
+  getLocation,
 }
