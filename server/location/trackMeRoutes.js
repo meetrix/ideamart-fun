@@ -28,6 +28,15 @@ routes.push.apply(routes, [
       tags: ['api'],
       validate: trackMeValidations.getLocation
     }
+  },
+  {
+    path: API_PATH + '/ussd/receiver',
+    method: 'POST',
+    handler: trackMeHandler.ussdReceiver,
+    config: {
+      tags: ['api'],
+      validate: trackMeValidations.validateUssdReceiver
+    }
   }
 ])
 

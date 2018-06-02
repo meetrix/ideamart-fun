@@ -39,11 +39,12 @@ const ussdReceiver = async function (req, res) {
   const message = req.query.message
 
   try {
+    console.log(req.payload)
     // const data = await weatherCtrl.subscribeUser(phoneNumber)
-    // return res({
-    //   ...data
-    // })
-    console.log(req.query)
+    return res({
+      statusCode: 'S1000',
+      statusDetail: 'Success'
+    })
   } catch (error) {
     const errorMessage = `Could not subscribe user with id ${message}`
     !error.logged && logger.error(error, errorMessage)
@@ -54,5 +55,5 @@ const ussdReceiver = async function (req, res) {
 module.exports = {
   subscribeUser,
   ussdReceiver,
-  getLocation,
+  getLocation
 }
