@@ -15,14 +15,32 @@ const trackMeValidations = {
   },
   getLocation: {
     headers: {},
-    query: {
-      phoneNumber: joi.string().trim().required().description('phoneNumber')
+    payload: {
+      sourceAddress: joi.string().trim().required().description('sourceAddress'),
+      requestId: joi.string().trim().required().description('requestId'),
+      encoding: joi.string().trim().required().description('encoding'),
+      applicationId: joi.string().trim().required().description('applicationId'),
+      message: joi.string().trim().required().description('message'),
+      version: joi.string().trim().required().description('version')
     },
     options: {
       allowUnknown: true
     }
   },
-  receivedSMS: {
+  validateUssdReceiver: {
+    headers: {},
+    payload: {
+      message: joi.string().trim().required().description('message'),
+      ussdOperation: joi.string().trim().required().description('ussdOperation'),
+      requestId: joi.number().integer().required().description('requestId'),
+      sessionId: joi.string().trim().required().description('sessionId'),
+      encoding: joi.string().trim().required().description('encoding'),
+      sourceAddress: joi.string().trim().required().description('sourceAddress'),
+      applicationId: joi.string().trim().required().description('applicationId'),
+      version: joi.string().trim().required().description('version')
+    }
+  },
+  validateSmsReceiver: {
     headers: {},
     payload: {
       sourceAddress: joi.string().trim().required().description('sourceAddress'),

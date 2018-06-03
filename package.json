@@ -22,6 +22,7 @@
     "report-coverage": "codeclimate-test-reporter < ./coverage/lcov.info"
   },
   "dependencies": {
+    "aws-sdk": "^2.250.1",
     "axios": "0.16.2",
     "bluebird": "3.5.0",
     "boom": "5.2.0",

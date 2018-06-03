@@ -22,7 +22,7 @@ routes.push.apply(routes, [
   },
   {
     path: API_PATH + '/lbs',
-    method: 'GET',
+    method: 'POST',
     handler: trackMeHandler.getLocation,
     config: {
       tags: ['api'],
@@ -30,12 +30,21 @@ routes.push.apply(routes, [
     }
   },
   {
-    path: API_PATH + '/sms/received',
+    path: API_PATH + '/ussd/receiver',
     method: 'POST',
-    handler: trackMeHandler.receivedSMS,
+    handler: trackMeHandler.ussdReceiver,
     config: {
       tags: ['api'],
-      validate: trackMeValidations.receivedSMS
+      validate: trackMeValidations.validateUssdReceiver
+    }
+  },
+  {
+    path: API_PATH + '/sms/receiver',
+    method: 'POST',
+    handler: trackMeHandler.smsReceiver,
+    config: {
+      tags: ['api'],
+      validate: trackMeValidations.validateSmsReceiver
     }
   }
 ])

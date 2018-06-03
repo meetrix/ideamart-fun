@@ -2,7 +2,7 @@
   "app": {
     "port": "3030",
     "name": "hapi-starter-kit",
-    "logLevel": "info",
+    "logLevel": "debug",
     "baseUrl": "http://localhost:7000"
   },
 
