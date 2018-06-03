@@ -5,6 +5,7 @@ const httpStatus = require('http-status')
 
 const trackMeCtrl = require('./trackMeCtrl')
 const logger = require('../utils/logger')
+const lib = require('./lib');
 
 const subscribeUser = async function (req, res) {
   const phoneNumber = req.payload.phoneNumber
@@ -26,6 +27,8 @@ const getLocation = async function (req, res) {
   try {
     const data = await trackMeCtrl.getLocation(phoneNumber);
     //const msg = await trackMeCtrl.sendSMS([phoneNumber],"hello")
+    const locationUrl = lib.mapLocation(data.latitude,data.longitude);
+    const msg = await trackMeCtrl.sendSMS([phoneNumber],locationUrl)
     return res({
       ...data
     })
