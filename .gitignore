@@ -49,4 +49,6 @@ jspm_packages
 # .env files
 bin/dev.env
 bin/test.env
-config/*
+
+# configuration
+config/
