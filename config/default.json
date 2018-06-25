@@ -1,7 +1,7 @@
 {
   "app": {
     "port": "3030",
-    "name": "hapi-starter-kit",
+    "name": "ideamart",
     "logLevel": "debug",
     "baseUrl": "http://localhost:7000"
   },
