@@ -3,7 +3,7 @@
     "port": "3030",
     "name": "ideamart",
     "logLevel": "debug",
-    "baseUrl": "http://localhost:7000"
+    "baseUrl": "http://api.dialog.lk"
   },
 
   "ideamartLocationApp": {
