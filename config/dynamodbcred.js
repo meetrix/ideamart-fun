@@ -1,6 +1,6 @@
 const cred = {
   accessKeyId: "d3",
-  secretAccessKey: "ddd3",
+  secretAccessKey: "ddddd3",
 }
 module.exports = cred
 
