@@ -1,9 +1,10 @@
 var AWS = require('aws-sdk');
+import { cred } from '../../config/dynamodbcred'
 
 AWS.config.update({
   region: "us-west-2",
-  "accessKeyId": "AKIAIPRAXEYE724WLYGA",
-  "secretAccessKey": "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",
+ "accessKeyId": cred.accessKeyId,
+ "secretAccessKey": cred.secretAccessKey,
 });
 
 const call = (action, params) => {
