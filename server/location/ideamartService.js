@@ -49,6 +49,7 @@ const subscribeUser = async function (appConfig,phoneNumber) {
   }
 }
 const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
+  console.log(phoneNumber)
   const options = {
     method: 'post',
     headers: {
@@ -57,7 +58,7 @@ const getLocation = async function (appConfig,phoneNumber,appLocationConfig) {
     url: `${config.get('app.baseUrl')}/lbs/locate`,
     data: {
       ...appConfig,
-      subscriberId: `tel ${phoneNumber}`,
+      subscriberId: `tel:94${phoneNumber.substr(phoneNumber.length - 9)}`,
       ...appLocationConfig
 
     }
