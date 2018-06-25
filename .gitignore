@@ -51,4 +51,4 @@ bin/dev.env
 bin/test.env
 
 # configuration
-config/*
+config/dynamodbcred.js
