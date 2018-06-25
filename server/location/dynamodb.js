@@ -1,5 +1,5 @@
 var AWS = require('aws-sdk');
-import { cred } from '../../config/dynamodbcred'
+const cred = require('../../config/dynamodbcred')
 
 AWS.config.update({
   region: "us-west-2",
