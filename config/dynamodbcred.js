@@ -1,4 +1,4 @@
 export const cred = {
   accessKeyId: "rr",
-  secretAccessKey: "3",
+  secretAccessKey: "3ii",
 }
